@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   &::before {
     content: "";
-    background-image: url("/Start/배경.png");
+    background-image: url("/Start/시작배경.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
