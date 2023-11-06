@@ -5,6 +5,8 @@ import SignUpName from "./pages/SignUp/SignUpName";
 import SignUpEmail from "./pages/SignUp/SignUpEmail";
 import SignUpPW from "./pages/SignUp/SignUpPW";
 import SignUpSucess from "./pages/SignUp/SignUpSucess";
+import Login from "./pages/Login/Login";
+
 function App() {
   return (
     <div className="App">
@@ -14,6 +16,7 @@ function App() {
         <Route path="/SignUpEmail" element={<SignUpEmail />} />{" "}
         <Route path="/SignUpPW" element={<SignUpPW />} />{" "}
         <Route path="/SignUpSucess" element={<SignUpSucess />} />{" "}
+        <Route path="/Login" element={<Login />} />{" "}
       </Routes>
     </div>
   );
