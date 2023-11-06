@@ -14,7 +14,7 @@ function Start() {
       <Title>가입이 완료되었습니다!</Title>
 
       <ButtonNext>
-        <Link to="/signupemail">
+        <Link to="/SignUpSucess">
           <h1>나의 홈 가기</h1>
         </Link>{" "}
       </ButtonNext>

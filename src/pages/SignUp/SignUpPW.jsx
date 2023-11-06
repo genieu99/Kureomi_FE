@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Title, SubTitle, ButtonNext } from "./Style";
+import { Container, Title, SubTitle, ButtonNext, Input } from "./Style";
 import { Link } from "react-router-dom";
 
 function Start() {
@@ -14,7 +14,7 @@ function Start() {
       <Title>비밀번호를 입력해주세요</Title>
 
       {/* 비밀번호 입력 창을 추가, 입력되는 비밀번호는 별표로 처리 */}
-      <input
+      <Input
         type="password"
         placeholder="비밀번호를 입력해주세요"
         value={password}
@@ -22,7 +22,7 @@ function Start() {
       />
 
       <ButtonNext>
-        <Link to="/signupemail">
+        <Link to="/SignUpSucess">
           <h1>확인</h1>
         </Link>{" "}
       </ButtonNext>

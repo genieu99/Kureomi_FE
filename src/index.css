@@ -8,4 +8,6 @@ body {
   justify-content: center;
   align-items: center;
   /* border: 1px solid red; */
+
+  background-size: cover; /* 이미지를 화면에 가득 채우도록 설정합니다. */
 }

@@ -27,7 +27,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   color: #333;
   font-size: 36px;
-  margin-bottom: 20px;
+  margin-top: -100%;
   padding: 10px; /* 텍스트와 텍스트 배경 사이 간격 조절 */
   z-index: 1; /* 다른 요소보다 앞에 표시 */
 `;
@@ -39,6 +39,7 @@ export const ButtonGroup = styled.div`
   gap: 20px;
   padding: 10px;
   z-index: 1;
+  margin-top: -10%;
 `;
 
 export const ButtonSign = styled.button`
