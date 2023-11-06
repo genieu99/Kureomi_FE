@@ -6,6 +6,7 @@ import SignUpEmail from "./pages/SignUp/SignUpEmail";
 import SignUpPW from "./pages/SignUp/SignUpPW";
 import SignUpSucess from "./pages/SignUp/SignUpSucess";
 import Login from "./pages/Login/Login";
+import './index.css';
 
 function App() {
   return (
