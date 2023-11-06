@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Title, ButtonNext } from "./Style";
+import { Container, Title, ButtonNext, Input } from "./Style";
 import { Link } from "react-router-dom";
 
 function Start() {
@@ -14,7 +14,7 @@ function Start() {
       <Title>이메일 주소를 알려주세요</Title>
 
       {/* 이메일 입력 창을 추가 */}
-      <input
+      <Input
         type="email"
         placeholder="이메일 주소를 입력해주세요"
         value={email}

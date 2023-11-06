@@ -66,3 +66,11 @@ export const h1 = styled.h1`
   line-height: normal;
   /* text-decoration: none; 밑줄 제거를 제거하세요 */
 `;
+export const Input = styled.input`
+  border: none; /* 테두리 제거 */
+  border-bottom: 1px solid #9e8f70; /* 밑줄 스타일 설정 */
+  padding: 10px; /* 입력 필드 주변 간격 조절 */
+  font-size: 16px; /* 글꼴 크기 설정 */
+  background: transparent; /* 입력 필드 배경 투명화 */
+  outline: none; /* 포커스시 테두리 제거 */
+`;
