@@ -20,7 +20,9 @@ function Start() {
         <ButtonSign>
           <Link to="/signupname">회원가입</Link>{" "}
         </ButtonSign>
-        <ButtonLogin>로그인</ButtonLogin>
+        <ButtonLogin>
+          <Link to="/Login">로그인</Link>{" "}
+        </ButtonLogin>
       </ButtonGroup>
     </Container>
   );
