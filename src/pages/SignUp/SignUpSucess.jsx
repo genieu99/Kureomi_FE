@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Title, SubTitle, ButtonNext } from "./Style";
+import { Container, Title, ButtonNext } from "./Style";
 import { Link } from "react-router-dom";
 
 function Start() {
@@ -11,17 +11,11 @@ function Start() {
 
   return (
     <Container>
-      <Title>이름을 알려주세요</Title>
-      <SubTitle>추후에 포토꾸러미 홈의 이름이 될 거에요</SubTitle>
-      <input
-        type="text"
-        placeholder="이름을 입력하세요"
-        value={name}
-        onChange={handleNameChange}
-      />
+      <Title>가입이 완료되었습니다!</Title>
+
       <ButtonNext>
         <Link to="/signupemail">
-          <h1>다음</h1>
+          <h1>나의 홈 가기</h1>
         </Link>{" "}
       </ButtonNext>
     </Container>

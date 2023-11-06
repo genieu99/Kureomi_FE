@@ -4,15 +4,15 @@ import Start from "./pages/Start/Start";
 import SignUpName from "./pages/SignUp/SignUpName";
 import SignUpEmail from "./pages/SignUp/SignUpEmail";
 import SignUpPW from "./pages/SignUp/SignUpPW";
-function App() {
+import SignUpSucess from "./pages/SignUp/SignUpSucess";
+
+const App = () => {
   return (
-    <div className="App">
-      <Start />
-      <SignUpName></SignUpName>
-      <SignUpEmail></SignUpEmail>
-      <SignUpPW></SignUpPW>
+    <div>
+      <Route path="/" component={Start} />
+      <Route path="/SignUpName" component={SignUpName} />
     </div>
   );
-}
+};
 
 export default App;
