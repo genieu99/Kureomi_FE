@@ -22,7 +22,7 @@ function Start() {
       />
 
       <ButtonNext>
-        <Link to="/signupemail">
+        <Link to="/signuppw">
           <h1>다음</h1>
         </Link>{" "}
       </ButtonNext>
