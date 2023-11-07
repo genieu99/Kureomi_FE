@@ -5,6 +5,7 @@ font-size:20px;
 z-index:3;
 margin-top:0px;
 `
+//이름
 export const LinkBox=styled.div`
 z-index:3;
 position:relative;
