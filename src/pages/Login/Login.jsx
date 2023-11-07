@@ -23,8 +23,8 @@ function Login(){
 
     return(
         <BackGround>
-            <BackIMG>
-                    <Title>로그인</Title>
+            <BackIMG imgUrl="/SignUp/로그인배경.png" opaCity="0.5">
+                    <Title marginTop="150px">로그인</Title>
                     <Form onSubmit={handleSubmit}>
                         <Input
                             type="text"

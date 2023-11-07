@@ -17,27 +17,28 @@ export const BackIMG = styled.div`
 
   &::after {
     content: "";
-    background-image: url("/SignUp/로그인배경.png");
-
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    opacity: 0.5;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    background-image: url(${props => props.imgUrl});      
+    background-size:100% 100%;
+    height:100%;
+    width:100%;
+    opacity:${props=>props.opaCity};
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
     z-index: 1;
   }
 `;
 
-export const Title = styled.h1`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 150px;
-  z-index: 4;
-`;
+export const Title=styled.p`
+margin-left:auto;
+margin-right:auto;
+margin-top: ${props => props.marginTop};
+z-index:4;
+font-weight:600;
+font-size:35px;
+`
 export const Input = styled.input`
   width: 80%;
   border: none;
