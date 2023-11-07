@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Container, Title, SubTitle, ButtonNext, Input } from "./Style";
 import { Link } from "react-router-dom";
-import {BackGround} from"../Login/Style"
-
+import { BackGround } from "../Login/Style";
 
 function Start() {
   const [password, setPassword] = useState(""); // 비밀번호 상태 변수를 사용하여 입력된 비밀번호를 추적
@@ -25,9 +24,7 @@ function Start() {
         />
 
         <ButtonNext>
-          <Link to="/SignUpSucess">
-            <h1>확인</h1>
-          </Link>{" "}
+          <Link to="/SignUpSucess">확인</Link>{" "}
         </ButtonNext>
       </Container>
     </BackGround>
