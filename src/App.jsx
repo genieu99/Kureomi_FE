@@ -7,7 +7,10 @@ import SignUpPW from "./pages/SignUp/SignUpPW";
 import SignUpSucess from "./pages/SignUp/SignUpSucess";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/UserHome"
-import './index.css';
+import VisitHome from "./pages/Visit/VistHome";
+import VisitSend from "./pages/Visit/VisitSend";
+
+import "./index.css";
 
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
         <Route path="/SignUpSucess" element={<SignUpSucess />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
         <Route path="/Home" element={<Home />} />{" "}
+        <Route path="/VisitHome" element={<VisitHome />} />{" "}
+        <Route path="/VisitSend" element={<VisitSend />} />{" "}
       </Routes>
     </div>
   );

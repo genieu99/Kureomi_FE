@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Title, ButtonNext } from "./Style";
+import { Container, Title, SubTitle, ButtonNext, ButtonSigns } from "./Style";
 import { Link } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 
@@ -9,9 +9,14 @@ function Start() {
   return (
     <BackGround>
       <Container>
-        <Title>가입이 완료되었습니다!</Title>
+        <ButtonSigns>
+          <Link to="/Login">로그인|</Link>{" "}
+          <Link to="/SignUpName">회원가입</Link>{" "}
+        </ButtonSigns>
+        <Title>김지은님의 홈</Title>
+        <SubTitle>받은 꾸러미 0개</SubTitle>
         <ButtonNext>
-          <Link to="/SignUpSucess">나의 홈 가기</Link>{" "}
+          <Link to="/VisitSend">포토꾸러미 전송하기</Link>{" "}
         </ButtonNext>
       </Container>
     </BackGround>

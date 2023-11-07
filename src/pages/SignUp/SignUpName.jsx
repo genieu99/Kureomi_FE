@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Title, SubTitle, ButtonNext, Input } from "./Style";
 import { Link } from "react-router-dom";
-import {BackGround} from"../Login/Style"
+import { BackGround } from "../Login/Style";
 
 function Start() {
   const [name, setName] = useState(""); // 상태 변수를 사용하여 입력된 이름을 추적
@@ -22,9 +22,7 @@ function Start() {
           onChange={handleNameChange}
         />
         <ButtonNext>
-          <Link to="/signupemail">
-            <h1>다음</h1>
-          </Link>{" "}
+          <Link to="/signupemail">다음</Link>{" "}
         </ButtonNext>
       </Container>
     </BackGround>
