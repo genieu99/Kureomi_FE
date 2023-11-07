@@ -1,28 +1,30 @@
 import React from "react";
+import {BackGround} from "../Login/Style"
 import {
-  Container,
-  Title,
+  BackImg,
+  // Title,
   ButtonGroup,
   ButtonSign,
   ButtonLogin,
-} from "./style";
-import { Link } from "react-router-dom"; // Link 컴포넌트 추가
+  LogoImg,StyledLink
+} from "./Style";
+
 
 function Start() {
   return (
-    <Container>
-      <Title>
-        <img src="public\Start\메인글자.png" alt="이미지 설명" />
-      </Title>
-      <ButtonGroup>
-        <ButtonSign>
-          <Link to="/signupname">회원가입</Link>{" "}
-        </ButtonSign>
-        <ButtonLogin>
-          <Link to="/Login">로그인</Link>{" "}
-        </ButtonLogin>
-      </ButtonGroup>
-    </Container>
+    <BackGround>
+      <BackImg>
+        <LogoImg src="public\Start\메인글자.png" alt="화면로고" />
+        <ButtonGroup>
+          <ButtonSign>
+            <StyledLink to="/signupname">회원가입</StyledLink>{" "}
+          </ButtonSign>
+          <ButtonLogin>
+            <StyledLink to="/Login">로그인</StyledLink>{" "}
+          </ButtonLogin>
+        </ButtonGroup>
+      </BackImg>
+    </BackGround>
   );
 }
 export default Start;

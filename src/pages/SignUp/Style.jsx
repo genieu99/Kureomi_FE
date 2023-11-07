@@ -2,27 +2,30 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height:100%;
+    width:100%;
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
 
-  &::before {
+    &::after{
     content: "";
     background-image: url("/SignUp/로그인배경.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    
+    background-size:100% 100%;
+    height:100%;
+    width:100%;
+    opacity:0.5;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
     z-index: -1;
-    opacity: 0.5;
-  }
+}
+
+
 `;
 
 export const Title = styled.h1`
@@ -32,10 +35,11 @@ export const Title = styled.h1`
   font-style: normal;
   font-weight: 800;
   line-height: normal;
-  z-index: 1; /* 다른 요소보다 앞에 표시 */
+  z-index: 3; /* 다른 요소보다 앞에 표시 */
   text-align: center; /* 텍스트를 가운데 정렬 */
-  margin-top: -100%;
+  // margin-top: -100%;
 `;
+
 export const SubTitle = styled.h1`
   color: #000;
   font-family: SUITE;
