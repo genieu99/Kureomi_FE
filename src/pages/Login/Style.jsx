@@ -17,12 +17,11 @@ width:100%;
 
     &::after{
     content: "";
-    background-image: url("/SignUp/로그인배경.png");
-    
+    background-image: url(${props => props.imgUrl});      
     background-size:100% 100%;
     height:100%;
     width:100%;
-    opacity:0.5;
+    opacity:${props=>props.opaCity};
     position:absolute;
     top:0px;
     left:0px;
@@ -34,11 +33,13 @@ width:100%;
 
 
 
-export const Title=styled.h1`
+export const Title=styled.p`
 margin-left:auto;
 margin-right:auto;
-margin-top: 150px;
+margin-top: ${props => props.marginTop};
 z-index:4;
+font-weight:600;
+font-size:35px;
 `
 export const Input = styled.input`
   width:80%;

@@ -11,8 +11,7 @@ export const Container = styled.div`
 
     &::after{
     content: "";
-    background-image: url("/SignUp/로그인배경.png");
-    
+    background-image: url("/SignUp/로그인배경.png");    
     background-size:100% 100%;
     height:100%;
     width:100%;
@@ -22,10 +21,8 @@ export const Container = styled.div`
     left:0px;
     right:0px;
     bottom:0px;
-    z-index: -1;
-}
-
-
+    z-index: 1;
+  }
 `;
 
 export const Title = styled.h1`
