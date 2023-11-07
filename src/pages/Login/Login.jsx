@@ -24,22 +24,22 @@ function Login(){
     return(
         <BackGround>
             <BackIMG>
-                <Title>로그인</Title>
-                <Form onSubmit={handleSubmit}>
-                    <Input
-                        type="text"
-                        placeholder="이메일 주소를 입력해주세요"
-                        value={inputEmail}
-                        onChange={handleEmailChange}
-                    />
-                    <Input
-                        type="password"
-                        placeholder="비밀번호를 입력해주세요"
-                        value={inputPass}
-                        onChange={handlePassChange}
-                    />
-                    <Button type="submit">로그인</Button>
-                </Form>
+                    <Title>로그인</Title>
+                    <Form onSubmit={handleSubmit}>
+                        <Input
+                            type="text"
+                            placeholder="이메일 주소를 입력해주세요"
+                            value={inputEmail}
+                            onChange={handleEmailChange}
+                        />
+                        <Input
+                            type="password"
+                            placeholder="비밀번호를 입력해주세요"
+                            value={inputPass}
+                            onChange={handlePassChange}
+                        />
+                        <Button type="submit">로그인</Button>
+                    </Form>
             </BackIMG>
 
         </BackGround>
