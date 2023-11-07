@@ -5,7 +5,6 @@ font-size:20px;
 z-index:3;
 margin-top:0px;
 `
-// 깃 업로드 확인용
 export const LinkBox=styled.div`
 z-index:3;
 position:relative;
