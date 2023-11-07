@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const BackGround=styled.div`
     height:100vh;
     width:100vw;
-    max-width:430px;
-    max-height:932px;
+    max-width:768px;
+    max-height:1024px;
 `
 
 export const BackIMG=styled.div`
@@ -19,7 +19,7 @@ width:100%;
     content: "";
     background-image: url("/SignUp/로그인배경.png");
     
-    background-size:cover;
+    background-size:100% 100%;
     height:100%;
     width:100%;
     opacity:0.5;
@@ -70,6 +70,7 @@ export const Button = styled.button`
   font-family: 'SUITE';
   font-weight:600;
   z-index:4;
+  cursor: pointer;
   `;
 
   export const Form = styled.form`
