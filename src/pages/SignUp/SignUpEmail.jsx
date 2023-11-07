@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Container, Title, ButtonNext, Input } from "./Style";
 import { Link } from "react-router-dom";
-import {BackGround} from"../Login/Style"
-
+import { BackGround } from "../Login/Style";
 
 function Start() {
   const [email, setEmail] = useState(""); // 이메일 상태 변수를 사용하여 입력된 이메일을 추적
@@ -25,9 +24,7 @@ function Start() {
         />
 
         <ButtonNext>
-          <Link to="/signuppw">
-            <h1>다음</h1>
-          </Link>{" "}
+          <Link to="/signuppw">다음</Link>{" "}
         </ButtonNext>
       </Container>
     </BackGround>
