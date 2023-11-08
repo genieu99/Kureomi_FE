@@ -64,6 +64,40 @@ export const Title = styled.h1`
   font-weight: 800;
   line-height: normal;
 `;
+export const Input = styled.input`
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid #9e8f70;
+  font-size: 20px;
+  background: transparent;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  color: rgba(0, 0, 0, 0.3);
+  font-family: "SUITE";
+  z-index: 4;
+`;
+
+export const TextInput = styled.input`
+  width: 317px;
+  height: 206px;
+  flex-shrink: 0;
+  font-family: "SUITE";
+  z-index: 4;
+  border-radius: 11px;
+  border: 2px solid #9e8f70;
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 10%;
+  color: #6a6a6a;
+  font-family: SUITE;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+`;
 
 export const SubTitle = styled.h1`
   color: #000;
@@ -112,6 +146,31 @@ export const ButtonSelect = styled.button`
   font-size: 20px;
   font-family: "SUITE";
   font-weight: 600;
+  z-index: 4;
+  cursor: pointer;
+  font-family: SUITE;
+
+  a {
+    text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+    color: inherit; /* 링크의 색상을 상속 받음 */
+  }
+`;
+export const ButtonSend = styled.button`
+  position: absolute;
+  top: 60%;
+  left: 80%;
+  transform: translateX(-50%); /* 가운데 정렬을 위해 사용 */
+  background: #bf3a3b;
+  width: 30%;
+  height: 5%;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-family: SUITE;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
   z-index: 4;
   cursor: pointer;
   font-family: SUITE;
