@@ -8,10 +8,10 @@ export const BackGround = styled.div`
 `;
 export const ButtonSigns = styled.button`
   position: absolute;
-  top: 10px; /* 원하는 위치로 조절 (상단 여백) */
-  right: 10px; /* 원하는 위치로 조절 (우측 여백) */
-  background: none; /* 배경 없음 */
-  border: none; /* 테두리 없음 */
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
   color: #000;
   font-family: Inter;
   font-size: 12px;
@@ -64,6 +64,20 @@ export const Title = styled.h1`
   font-weight: 800;
   line-height: normal;
 `;
+
+export const Title2 = styled.h1`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25%;
+  z-index: 4;
+
+  color: #000;
+  font-family: SUITE;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 139.8%; /* 27.96px */
+`;
 export const Input = styled.input`
   width: 80%;
   border: none;
@@ -78,25 +92,6 @@ export const Input = styled.input`
   color: rgba(0, 0, 0, 0.3);
   font-family: "SUITE";
   z-index: 4;
-`;
-
-export const TextInput = styled.input`
-  width: 317px;
-  height: 206px;
-  flex-shrink: 0;
-  font-family: "SUITE";
-  z-index: 4;
-  border-radius: 11px;
-  border: 2px solid #9e8f70;
-  background: rgba(255, 255, 255, 0.5);
-  margin-top: 10%;
-  color: #6a6a6a;
-  font-family: SUITE;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  outline: none;
 `;
 
 export const SubTitle = styled.h1`

@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Title,
-  SubTitle,
-  ButtonNext,
-  ButtonSigns,
-  Input,
-  TextInput,
-  ButtonSend,
-} from "./Style";
+import { Container, Title, ButtonSigns, Input, ButtonSend } from "./Style";
 import { Link } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 
@@ -33,6 +24,10 @@ function Start() {
     borderRadius: "4px",
     fontSize: "16px",
     resize: "vertical" /* 사용자가 수직으로만 리사이즈 가능하도록 설정 */,
+    background: "rgba(255, 255, 255, 0.50)",
+    outline: "none",
+    margin: "30px",
+    fontfamily: "SUITE",
   };
   return (
     <BackGround>
