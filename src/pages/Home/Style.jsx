@@ -40,7 +40,7 @@ margin-left:auto;
 margin-right:auto;
 background-image:url("/Img/clickPresent.png");
 background-size:100% 100%;
-width:65%;
+width:50%;
 height:90%;
 position:relative;
 left:4%;
@@ -59,6 +59,7 @@ z-index:4;
 width:100%;
 height:${props => props.height};
 display:flex;
-justify-content:center;
+justify-content:${props => props.flag};
 background-color:${props => props.color};
+margin: ${props => props.margin}
 ` 
