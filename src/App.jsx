@@ -10,6 +10,7 @@ import Home from "./pages/Home/UserHome";
 import VisitHome from "./pages/Visit/VistHome";
 import VisitSend from "./pages/Visit/VisitSend";
 import VisitWrite from "./pages/Visit/VisitWrite";
+import VisitSucess from "./pages/Visit/VisitSucess";
 
 import "./index.css";
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/VisitHome" element={<VisitHome />} />{" "}
         <Route path="/VisitSend" element={<VisitSend />} />{" "}
         <Route path="/VisitWrite" element={<VisitWrite />} />{" "}
+        <Route path="/VisitSucess" element={<VisitSucess />} />{" "}
       </Routes>
     </div>
   );
