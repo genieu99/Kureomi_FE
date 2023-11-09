@@ -12,6 +12,7 @@ import VisitSend from "./pages/Visit/VisitSend";
 import VisitWrite from "./pages/Visit/VisitWrite";
 import VisitSucess from "./pages/Visit/VisitSucess";
 import KureomiClose from "./pages/Main/KureomiClose";
+import KureomiOpen from "./pages/Main/KureomiOpen";
 
 import "./index.css";
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="/VisitWrite" element={<VisitWrite />} />{" "}
         <Route path="/VisitSucess" element={<VisitSucess />} />{" "}
         <Route path="/KureomiClose" element={<KureomiClose />} />{" "}
+        <Route path="/KureomiOpen" element={<KureomiOpen />} />{" "}
+        
       </Routes>
     </div>
   );

@@ -1,5 +1,6 @@
 // style.jsx
 import styled from "styled-components";
+
 export const BackGround = styled.div`
   height: 100vh;
   width: 100vw;
@@ -52,5 +53,46 @@ export const Img = styled.img`
   height: 314px;
   flex-shrink: 0;
 
-  transition: transform 2s; // transform 속성에 대한 애니메이션 지속 시간 설정 (예: 1초)
+  transition: transform 1s; // transform 속성에 대한 애니메이션 지속 시간 설정 (예: 1초)
 `;
+
+export const OpenBoxImg=styled.div`
+width:90%;
+height:75%;
+z-index:4;
+background-image: url("/Main/openBox.png");
+background-size: 100% 100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+`
+
+export const ImgBox=styled.div`
+width:67%;
+height:42%;
+z-index:4;
+// green대신 콜라주 이미지를 넣으면 됨
+background-color:green;  
+background-size: 100% 100%;
+margin-top:4%;
+position:relative;
+left:1%;
+`
+
+export const TextBox=styled.div`
+width:67%;
+height:32%;
+z-index:4;
+position:relative;
+top:3%;
+left:1%;
+font-family: 'SUITE';
+overflow:scroll;
+
+`
+export const Letter=styled.p`
+padding-left:10px;
+font-family: 'SUITE';
+font-size:18px;
+line-height:150%;
+`
