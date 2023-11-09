@@ -5,11 +5,14 @@ import { Link, useLocation } from "react-router-dom";
 
 
 function Home(){
+
+
   const[ShowPresent,setShowPresent]=useState(false);
   const[ShowClickPresent,setShowClickPresent]=useState(true);
 
   // const userLocation=useLocation();
   const userLocation="www.pokku.user1.home"
+  
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
     alert("복사 되었습니다!")

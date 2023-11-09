@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Title, ButtonNext, Input } from "./Style";
-import { Link } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 
 function Start() {
@@ -9,6 +9,20 @@ function Start() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value); // 입력된 이메일을 상태 변수에 업데이트
   };
+
+  const location=useLocation();
+  const userName=location.state.userName;
+  
+  
+  const navigate=useNavigate();
+  const move=()=>{
+    navigate('/SignUpPW',{
+      state:{
+        userName:userName,
+        email:email
+      }
+    });
+  }
 
   return (
     <BackGround>
@@ -19,12 +33,13 @@ function Start() {
         <Input
           type="email"
           placeholder="이메일 주소를 입력해주세요"
+          name="email"
           value={email}
           onChange={handleEmailChange}
         />
 
-        <ButtonNext>
-          <Link to="/signuppw">다음</Link>{" "}
+        <ButtonNext onClick={move}>다음
+          {/* <Link to="/signuppw">다음</Link>{" "} */}
         </ButtonNext>
       </Container>
     </BackGround>
