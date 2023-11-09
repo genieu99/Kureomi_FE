@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { Container, Title, SubTitle, ButtonNext, Input } from "./Style";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import { BackGround } from "../Login/Style";
 
 function Start() {
-  const [name, setName] = useState(""); // 상태 변수를 사용하여 입력된 이름을 추적
+  const navigate=useNavigate();
+
+  const [userName, setUserName] = useState(""); // 상태 변수를 사용하여 입력된 이름을 추적
 
   const handleNameChange = (event) => {
-    setName(event.target.value); // 입력된 이름을 상태 변수에 업데이트
+    setUserName(event.target.value); // 입력된 이름을 상태 변수에 업데이트
   };
+  console.log(userName);
+  const move=()=>{
+    navigate('/signupemail',{
+      state:{
+        userName:userName
+      }
+    });
+  }
 
   return (
     <BackGround>
@@ -18,11 +28,12 @@ function Start() {
         <Input
           type="text"
           placeholder="이름을 입력하세요"
-          value={name}
+          name="userName"
+          value={userName}
           onChange={handleNameChange}
         />
-        <ButtonNext>
-          <Link to="/signupemail">다음</Link>{" "}
+        <ButtonNext onClick={move}>다음
+          {/* <Link to="/signupemail">다음</Link>{" "} */}
         </ButtonNext>
       </Container>
     </BackGround>
