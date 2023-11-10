@@ -7,8 +7,9 @@ import axios from "axios";
 
 function Start() {
   const location = useLocation();
-  const params = useParams();
-  const uniqueUrl = params.uniqueUrl;
+
+  const uniqueUrl = location.state?.uniqueUrl;
+  console.log(uniqueUrl);
 
   const [name, setName] = useState("");
   const [letter, setLetter] = useState("");

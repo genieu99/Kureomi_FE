@@ -1,11 +1,15 @@
 import React, { useState, useRef } from "react";
 import { Container, Title, SubTitle, ButtonSelect, ButtonSigns } from "./Style";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 import axios from "axios";
 
 function VisitSend() {
   const navigate = useNavigate();
+  const location=useLocation();
+  const uniqueUrl = location.state?.uniqueUrl;
+  console.log(uniqueUrl);
+
 
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [sendPhotoComplete, setSendPhotoComplete] = useState(false); // 이 부분을 추가합니다.
@@ -37,18 +41,38 @@ function VisitSend() {
 
       console.log(response.status);
 
-      if (response.status === 201) {
+      //defaultfile 처리 코드 추가
+      if (response.status === 200 || response.status === 201) {
         console.log("사진 전송 완료");
         console.log("formData:", formData);
         setSendPhotoComplete(true);
         console.log(response.data);
 
         // photoId를 추출하여 Start 컴포넌트로 전달
-        const photoIdList = response.data.map((photo) => photo.photoId);
-        navigate("/visitwrite", { state: { photoIdList } });
+        const photoInfoList = response.data.photoInfoList;
+        const photoIdList = photoInfoList.map((photo) => photo.photo_id);
+
+        //파일명도 추출해서 'default.png'가 있는지 찾기
+        const fileUrlList = photoInfoList.map((photo) => photo.fileUrl); 
+        const defaultFile = fileUrlList.find((fileUrl) => fileUrl === 'default.png');
+
+        //defaultfile이 있으면 알림창 띄우기
+        if (defaultFile) {
+          alert('유해 사진이 감지되어 기본 이미지로 대체됩니다.');
+        }
+        //여기까지
+
+        navigate("/visitwrite", { state: { 
+          photoIdList :photoIdList,
+          uniqueUrl:uniqueUrl
+        } 
+
+      });
       } else {
         console.log("사진 전송 실패 ");
       }
+
+
     } catch (error) {
       console.error("오류 발생:", error);
     }

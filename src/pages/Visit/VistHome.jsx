@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Title, SubTitle, ButtonNext, ButtonSigns } from "./Style";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation,useNavigate } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 import axios from "axios";
 
@@ -15,6 +15,17 @@ function VisitHome() {
 
   const apiUrl = "/api/v1/kureomi/home/"+uniqueUrl;
   const photoapiUrl= "/api/v1/kureomi/"+uniqueUrl;
+
+  const navigate=useNavigate();
+
+  const move=()=>{
+    navigate('/VisitSend',{
+      state:{
+        uniqueUrl:uniqueUrl
+      }
+    });
+  }
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,8 +76,8 @@ function VisitHome() {
         </ButtonSigns>
         <Title>{userName}의 홈</Title>
         <SubTitle>받은 꾸러미 : {size}개</SubTitle>
-        <ButtonNext>
-          <Link to="/VisitSend">포토꾸러미 전송하기</Link>{" "}
+        <ButtonNext onClick={move}>
+          포토꾸러미 전송하기
         </ButtonNext>
       </Container>
     </BackGround>
