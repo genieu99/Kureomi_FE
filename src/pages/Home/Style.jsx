@@ -16,8 +16,9 @@ border-radius: 10px 0 0 10px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:130%;
+font-size:40%;
 color:rgba(0,0,0,0.5);
+text-align:center;
 `
 
 export const CopyBtn=styled.button`

@@ -14,9 +14,7 @@ function Start() {
   const location = useLocation();
   const userName = location.state.userName;
   const email = location.state.email;
-  console.log(userName);
-  console.log(email);
-  console.log(password);
+
   const navigate = useNavigate();
 
   const isFormValid = () => {
@@ -39,10 +37,10 @@ function Start() {
       password: password,
     };
 
-    console.log(userData);
+    let request;
 
     try {
-      const response = await axios.post(
+      request = await axios.post(
         "/api/v1/kureomi/signup",
         {
           userName: userName,
@@ -52,22 +50,24 @@ function Start() {
         { withCredentials: true }
       );
 
-      console(response.status);
+      // if (request.status ===200) {
 
-      if (response.status === 201) {
-        console.log("회원가입이 완료되었습니다.");
-        console.log("userName:", userName);
-        console.log("Email:", email);
-        console.log("Password:", password);
-        setSignUpComplete(true); // 회원가입 완료 상태를 설정
-        console.log(response.data);
-      } else {
-        console.log("회원가입 실패");
-      }
+      //   console.log("userName:", userName);
+      //   console.log("Email:", email);
+      //   console.log("Password:", password);
+      //   setSignUpComplete(true); // 회원가입 완료 상태를 설정
     } catch (error) {
       console.error("오류 발생:", error);
     }
+
+    const url = request.data;
+    navigate("/SignUpSucess", {
+      state: {
+        url: url,
+      },
+    });
   };
+
   return (
     <BackGround>
       <Container>
@@ -86,7 +86,6 @@ function Start() {
           type="submit"
           onClick={async () => {
             await handleNextClick();
-            navigate("/SignUpSucess");
           }}
         >
           {/* <Link to="/SignUpSucess">확인</Link>{" "} */}
