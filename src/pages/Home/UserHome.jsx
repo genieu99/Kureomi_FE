@@ -17,28 +17,29 @@ function Home() {
   const uniqueUrl = location.pathname;
 
   const [ShowPresent, setShowPresent] = useState(false);
-  const [ShowClickPresent, setShowClickPresent] = useState([]);
+  const [ShowClickPresent, setShowClickPresent] = useState(true);
 
   const userLocation = "http://localhost:5173/visithome" + uniqueUrl;
 
-  console.log(uniqueUrl);
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
     alert("복사 되었습니다!");
   };
+
   const [response, setResponse] = useState(null);
-  const [photoresponse, setPhotoResponse] = useState(null);
+  const [photoresponse, setPhotoResponse] = useState([]);
 
   const [userName, setUserName] = useState("");
   const apiUrl = "/api/v1/kureomi" + uniqueUrl;
 
   const uniqueId = location.pathname.replace("/home/", "");
-  console.log();
+  
   const photoapiUrl = "/api/v1/kureomi/" + uniqueId;
+  console.log(photoapiUrl);
   const navigate = useNavigate();
 
   const handlePresentClick = (giftBoxId, uniqueUrl) => {
-    console.log(giftBoxId);
+    
     navigate("/KureomiClose", {
       state: {
         giftBoxId: giftBoxId,
@@ -66,7 +67,7 @@ function Home() {
       setUserName(response.userName);
     }
   }, [response]);
-
+  
   //전체 포토꾸러미 서버로부터 받기
   useEffect(() => {
     const fetchData = async () => {
@@ -75,15 +76,17 @@ function Home() {
           withCredentials: true,
         });
         setPhotoResponse(photoresponse.data);
+        
       } catch (error) {
         console.error("오류", error);
       }
     };
-
+    
     fetchData();
   }, []);
 
-  const size = photoresponse ? photoresponse.length : 0;
+console.log(photoresponse);
+const size = photoresponse?.length;
 
   return (
     <BackGround>
