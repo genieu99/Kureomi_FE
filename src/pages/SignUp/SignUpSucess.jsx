@@ -10,7 +10,7 @@ function Start() {
   const navigate=useNavigate();
   
   const handleClick = () => {
-    navigate(`/Home/${userUrl}`);
+    navigate(`/home/${userUrl}`);
   };
 
     return (
