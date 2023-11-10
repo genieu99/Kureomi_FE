@@ -11,6 +11,7 @@ function Start() {
   const handleClick = () => {
     navigate(`/home/${userUrl}`);
   };
+  console.log(userUrl);
 
   return (
     <BackGround>
