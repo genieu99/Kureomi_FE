@@ -19,7 +19,8 @@ function Home() {
   const [ShowPresent, setShowPresent] = useState(false);
   const [ShowClickPresent, setShowClickPresent] = useState([]);
 
-  const userLocation = "http://localhost:5173" + uniqueUrl;
+  const userLocation = "http://localhost:5173/visithome" + uniqueUrl;
+
   console.log(uniqueUrl);
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
