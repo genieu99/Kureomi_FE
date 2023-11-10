@@ -43,7 +43,9 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    console.log("Response:", response);
     if (response && response.userName) {
+      console.log("Username:", response.userName);
       setUserName(response.userName);
     }
   }, [response]);
