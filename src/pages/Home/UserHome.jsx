@@ -13,7 +13,6 @@ function Home() {
 
   const userLocation = "http://localhost:5173" + uniqueUrl;
 
-  const userLocation="http://localhost:5173"+uniqueUrl;
   console.log(uniqueUrl);
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
@@ -22,8 +21,7 @@ function Home() {
   const [response, setResponse] = useState(null);
   const [photoresponse, setPhotoResponse] = useState(null);
 
-  const [userName, setUserName] = useState("");
-  const apiUrl = "/api/v1/kureomi" + uniqueUrl;
+
   const [userName, setUserName] = useState("");
   const apiUrl = "/api/v1/kureomi" + uniqueUrl;
 
@@ -61,7 +59,7 @@ function Home() {
       setUserName(response.userName);
     }
   }, [response]);
-  }, [response]);
+
 
   //전체 포토꾸러미 서버로부터 받기 
   useEffect(() => {

@@ -30,12 +30,11 @@ function Login() {
       );
 
       console.log("로그인 성공");
-      const url = response.data;
-      navigate("/home/:id", {
-        state: {
-          url: url,
-        },
-      });
+      console.log(response.data);
+      const uniqueUrl=response.data.uniqueUrl;
+      console.log(uniqueUrl);
+
+      navigate(`/home/${uniqueUrl}`);
     } catch (error) {
       console.error("로그인 오류:", error);
     }
