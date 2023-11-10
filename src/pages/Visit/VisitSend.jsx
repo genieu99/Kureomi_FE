@@ -1,21 +1,66 @@
 import React, { useState, useRef } from "react";
 import { Container, Title, SubTitle, ButtonSelect, ButtonSigns } from "./Style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BackGround } from "../Login/Style";
+import axios from "axios";
 
-function Start() {
-  const [selectedFiles, setSelectedFiles] = useState([]); // 사용자가 선택한 파일을 추적
+function VisitSend() {
+  const navigate = useNavigate();
+
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [sendPhotoComplete, setSendPhotoComplete] = useState(false); // 이 부분을 추가합니다.
   const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
     const files = event.target.files;
-    setSelectedFiles(files);
+    setSelectedFiles(Array.from(files) || []); // Convert FileList to Array
   };
 
   const openFileInput = () => {
     fileInputRef.current.click();
   };
 
+  const sendFilesToBackend = async () => {
+    const formData = new FormData();
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      formData.append("photos", selectedFiles[i]);
+    }
+
+    try {
+      const response = await axios.post("/api/v1/kureomi/photo", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log(response.status);
+
+      if (response.status === 201) {
+        console.log("사진 전송 완료");
+        console.log("formData:", formData);
+        setSendPhotoComplete(true);
+        console.log(response.data);
+
+        navigate("/visitwrite");
+      } else {
+        console.log("사진 전송 실패 ");
+      }
+    } catch (error) {
+      console.error("오류 발생:", error);
+    }
+  };
+
+  const buttonStyle = {
+    padding: "10px 20px",
+    backgroundColor: "#4CAF50", // 원하는 배경색
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    fontSize: "16px",
+  };
   return (
     <BackGround>
       <Container>
@@ -34,7 +79,7 @@ function Start() {
           ref={fileInputRef}
         />
         <ButtonSelect onClick={openFileInput}>사진 선택하기</ButtonSelect>
-        {selectedFiles.length > 0 && (
+        {Array.isArray(selectedFiles) && selectedFiles.length > 0 && (
           <div>
             <h2>선택한 파일 목록:</h2>
             <ul>
@@ -44,9 +89,12 @@ function Start() {
             </ul>
           </div>
         )}
+        <button style={buttonStyle} onClick={sendFilesToBackend}>
+          전송
+        </button>
       </Container>
     </BackGround>
   );
 }
 
-export default Start;
+export default VisitSend;
