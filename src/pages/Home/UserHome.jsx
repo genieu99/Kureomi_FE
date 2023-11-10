@@ -1,18 +1,18 @@
-import React,{useState,useEffect} from "react";
-import {BackGround,BackIMG,Title} from "../Login/Style"
-import {Text,LinkBox,CopyBtn,ClickBox,PresentComponent,FlexBox,PresentBox} from "./Style";
-import { Link, useLocation, useParams} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BackGround, BackIMG, Title } from "../Login/Style";
+import { Text, LinkBox, CopyBtn, ClickBox, PresentComponent, FlexBox, PresentBox } from "./Style";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Home() {
   const location = useLocation();
-  const uniqueUrl = location.pathname; // /Home/cf093be6-17e3-49c9-8e7b-f77a30eac2d4
+  const uniqueUrl = location.pathname;
 
-  const[ShowPresent,setShowPresent]=useState(false);
-  const[ShowClickPresent,setShowClickPresent]=useState([]);
+  const [ShowPresent, setShowPresent] = useState(false);
+  const [ShowClickPresent, setShowClickPresent] = useState([]);
 
-  const userLocation="http://localhost:5173"+uniqueUrl;
-  console.log(uniqueUrl);
+  const userLocation = "http://localhost:5173" + uniqueUrl;
+
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
     alert("복사 되었습니다!");
@@ -20,15 +20,25 @@ function Home() {
   const [response, setResponse] = useState(null);
   const [photoresponse, setPhotoResponse] = useState(null);
 
-  const [userName,setUserName]=useState("");
-  const apiUrl="/api/v1/kureomi"+uniqueUrl;
+  const [userName, setUserName] = useState("");
+  const apiUrl = "/api/v1/kureomi" + uniqueUrl;
 
-  const uniqueId = location.pathname.replace("/home/", ""); //뒤에 uniqueid만 나오도록
+  const uniqueId = location.pathname.replace("/home/", "");
+  console.log();
+  const photoapiUrl = "/api/v1/kureomi/" + uniqueId;
+  const navigate = useNavigate();
 
-  const photoapiUrl="/api/v1/kureomi/"+uniqueId;
-  
+  const handlePresentClick = (giftBoxId,uniqueUrl) => {
+    console.log(giftBoxId);
+    navigate('/KureomiClose', { 
+      state: { 
+        giftBoxId:giftBoxId,
+        uniqueUrl:uniqueUrl
+      }
+    });
+  }
 
-  //유저 이름 가져오기
+  //서버로부터 username받기
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,18 +53,16 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    console.log("Response:", response);
     if (response && response.userName) {
-      console.log("Username:", response.userName);
       setUserName(response.userName);
     }
-  }, [response]); 
+  }, [response]);
 
-  //포토꾸러미 가져오기
+  //전체 포토꾸러미 서버로부터 받기 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const photoresponse = await axios.get(photoapiUrl,{ withCredentials: true });
+        const photoresponse = await axios.get(photoapiUrl, { withCredentials: true });
         setPhotoResponse(photoresponse.data);
       } catch (error) {
         console.error('오류', error);
@@ -64,7 +72,7 @@ function Home() {
     fetchData();
   }, []);
 
-  const size=photoresponse?.length;
+  const size = photoresponse ? photoresponse.length : 0;
 
   return (
     <BackGround>
@@ -76,9 +84,13 @@ function Home() {
           <CopyBtn onClick={handleCopy}>복사</CopyBtn>
         </FlexBox>
         <PresentBox>
-        {ShowPresent && Array.from({ length: size }, (_, index) => (
-          <PresentComponent key={index} />
-          ))}
+          {ShowPresent && photoresponse.map((item, index) => 
+            <PresentComponent 
+              key={index} 
+              giftBoxId={item.giftBox_id} 
+              onClick={() => handlePresentClick(item.giftBox_id,uniqueUrl)} 
+            />
+          )}
         </PresentBox>
         <FlexBox height="22%" flag="center">
           {ShowClickPresent && (
