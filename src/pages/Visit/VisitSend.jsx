@@ -23,7 +23,7 @@ function Start() {
           <Link to="/Login">로그인|</Link>{" "}
           <Link to="/SignUpName">회원가입</Link>{" "}
         </ButtonSigns>
-        <Title>김지은님의 홈</Title>
+        <Title>a먀먀ㅑㅁ 홈</Title>
         <SubTitle>함께 추억하고 싶은 사진을 6장 선택해주세요.</SubTitle>
         <input
           type="file"
