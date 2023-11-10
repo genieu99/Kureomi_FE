@@ -43,7 +43,9 @@ function VisitSend() {
         setSendPhotoComplete(true);
         console.log(response.data);
 
-        navigate("/visitwrite");
+        // photoId를 추출하여 Start 컴포넌트로 전달
+        const photoIdList = response.data.map((photo) => photo.photoId);
+        navigate("/visitwrite", { state: { photoIdList } });
       } else {
         console.log("사진 전송 실패 ");
       }

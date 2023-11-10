@@ -1,49 +1,68 @@
-import {BackGround,BackIMG,Title,Input,Button,Form} from "./Style";
+import { useNavigate } from "react-router-dom";
+import { BackGround, BackIMG, Title, Input, Button, Form } from "./Style";
 import React, { useState } from "react";
+import axios from "axios";
 
+function Login() {
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPass, setInputPass] = useState("");
+  const navigate = useNavigate(); // useNavigate를 이곳에서 사용
 
-
-function Login(){
-    const [inputEmail, setInputEmail] = useState(""); 
-    const [inputPass, setInputPass] = useState(""); 
-
-    const handleEmailChange = (event) => {
+  const handleEmailChange = (event) => {
     setInputEmail(event.target.value);
-    };
+  };
 
-    const handlePassChange = (event) => {
-        setInputPass(event.target.value);
-    };
+  const handlePassChange = (event) => {
+    setInputPass(event.target.value);
+  };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // 로그인 로직  구현
-        console.log(`이메일: ${email}, 비밀번호: ${password}`);
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    return(
-        <BackGround>
-            <BackIMG imgUrl="/SignUp/로그인배경.png" opaCity="0.5">
-                    <Title marginTop="150px">로그인</Title>
-                    <Form onSubmit={handleSubmit}>
-                        <Input
-                            type="text"
-                            placeholder="이메일 주소를 입력해주세요"
-                            value={inputEmail}
-                            onChange={handleEmailChange}
-                        />
-                        <Input
-                            type="password"
-                            placeholder="비밀번호를 입력해주세요"
-                            value={inputPass}
-                            onChange={handlePassChange}
-                        />
-                        <Button type="submit">로그인</Button>
-                    </Form>
-            </BackIMG>
+    try {
+      const response = await axios.post(
+        "/api/v1/kureomi/login",
+        {
+          email: inputEmail,
+          password: inputPass,
+        },
+        { withCredentials: true }
+      );
 
-        </BackGround>
-    )
+      console.log("로그인 성공");
+      const url = response.data;
+      navigate("/home/:id", {
+        state: {
+          url: url,
+        },
+      });
+    } catch (error) {
+      console.error("로그인 오류:", error);
+    }
+  };
+
+  return (
+    <BackGround>
+      <BackIMG imgUrl="/SignUp/로그인배경.png" opaCity="0.5">
+        <Title marginTop="150px">로그인</Title>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="이메일 주소를 입력해주세요"
+            value={inputEmail}
+            onChange={handleEmailChange}
+          />
+          <Input
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            value={inputPass}
+            onChange={handlePassChange}
+          />
+          <Button type="submit">로그인</Button>
+        </Form>
+      </BackIMG>
+    </BackGround>
+  );
 }
 
 export default Login;
