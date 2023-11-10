@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Container, Title, ButtonSigns, Input, ButtonSend } from "./Style";
 import { Link } from "react-router-dom";
 import { BackGround } from "../Login/Style";
-
 import axios from "axios";
 
 function Start() {
   const location = useLocation();
+  const params = useParams();
+  const uniqueUrl = params.uniqueUrl;
+
   const [name, setName] = useState("");
   const [letter, setLetter] = useState("");
-  const [writeSendComplete, setWriteSendComplete] = useState(false);
   const [photoIdList, setPhotoIdList] = useState([]);
 
   useEffect(() => {
-    // location에서 photoIdList를 추출하여 설정
     if (location.state && location.state.photoIdList) {
       setPhotoIdList(location.state.photoIdList);
     }
@@ -29,26 +29,55 @@ function Start() {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // 폼 제출 기본 동작 방지
+    event.preventDefault();
 
-    // 입력 내용 콘솔 출력
     console.log("작성자:", name);
     console.log("편지 내용:", letter);
     console.log("사진 ID 목록:", photoIdList);
 
-    const userData = new FormData(); // FormData 객체 생성
+    // 데이터 가져오기
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/v1/kureomi/data`, {
+          params: { photoIdList: photoIdList },
+          withCredentials: true,
+        });
 
+        console.log(response.status);
+
+        // 서버 응답이 200이면 데이터 가져오기 성공
+        console.log(
+          response.status === 200
+            ? "데이터 가져오기 성공"
+            : "데이터 가져오기 실패"
+        );
+
+        // 서버에서 반환한 데이터
+        console.log(response.data);
+
+        // 반환된 photoIdList를 userData의 photoIdList에 추가
+        setPhotoIdList(response.data.map((photo) => photo.photoId));
+      } catch (error) {
+        // 에러 발생 시 로그 출력
+        console.log("오류 발생:", error);
+      }
+    };
+
+    // fetchData 함수를 실행하여 데이터를 가져옴
+    fetchData();
+
+    const userData = new FormData();
     userData.append("writer", name);
     userData.append("message", letter);
 
     // photoIdList를 formData에 추가
     for (let i = 0; i < photoIdList.length; i++) {
-      userData.append("photoIdList", photoIdList[i]);
+      userData.append("photos", photoIdList[i]);
     }
 
     try {
       const response = await axios.post(
-        `/api/v1/kureomi/${uniqueUrl}/create`, // uniqueUrl을 어떻게 처리할지에 대한 수정이 필요
+        `/api/v1/kureomi/${uniqueUrl}/create`,
         userData,
         {
           withCredentials: true,
@@ -58,12 +87,10 @@ function Start() {
         }
       );
 
-      console.log(response.status);
+      console.log(response); // 요청 성공 시 응답을 출력
 
       if (response.status === 201) {
         console.log("전송 완료");
-        setWriteSendComplete(true);
-        console.log("백엔드 응답 데이터:", response.data);
       } else {
         console.log("전송 실패");
       }
@@ -108,9 +135,7 @@ function Start() {
             value={letter}
             onChange={handleLetterChange}
           />
-          <ButtonSend type="submit">
-            <Link to="/VisitSend">보내기</Link>{" "}
-          </ButtonSend>
+          <ButtonSend type="submit">보내기</ButtonSend>
         </form>
       </Container>
     </BackGround>
