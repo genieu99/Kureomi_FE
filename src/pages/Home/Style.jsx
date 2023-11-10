@@ -50,10 +50,13 @@ top:15%;
 
 export const PresentComponent=styled.div`
 z-index:3;
-width:100px;
-height:100px;
+width:20%;
+height:28%;
 background-image:url("/Img/present.png");
 background-size:100% 100%;
+margin-left:5%;
+margin-right:5%;
+margin-top:5%;
 ` 
 export const FlexBox=styled.div`
 z-index:4;
@@ -62,5 +65,17 @@ height:${props => props.height};
 display:flex;
 justify-content:${props => props.flag};
 background-color:${props => props.color};
-margin: ${props => props.margin}
+margin: ${props => props.margin};
+` 
+
+export const PresentBox=styled.div`
+z-index:3;
+width:100%;
+height:80%;
+overflow: scroll;
+display:inline-block;
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content:center;
 ` 
