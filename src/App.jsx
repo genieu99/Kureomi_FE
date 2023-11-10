@@ -26,7 +26,9 @@ function App() {
         <Route path="/SignUpPW" element={<SignUpPW />} />{" "}
         <Route path="/SignUpSucess" element={<SignUpSucess />} />{" "}
         <Route path="/Login" element={<Login />} />{" "}
-        <Route path="/Home" element={<Home />} />{" "}
+        
+        <Route path="/Home/:id" element={<Home />} />{" "}
+        
         <Route path="/VisitHome" element={<VisitHome />} />{" "}
         <Route path="/VisitSend" element={<VisitSend />} />{" "}
         <Route path="/VisitWrite" element={<VisitWrite />} />{" "}
