@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BackGround, BackIMG, Title } from "../Login/Style";
-import { Text, LinkBox, CopyBtn, ClickBox, PresentComponent, FlexBox, PresentBox } from "./Style";
+import {
+  Text,
+  LinkBox,
+  CopyBtn,
+  ClickBox,
+  PresentComponent,
+  FlexBox,
+  PresentBox,
+} from "./Style";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -9,36 +17,36 @@ function Home() {
   const uniqueUrl = location.pathname;
 
   const [ShowPresent, setShowPresent] = useState(false);
-  const [ShowClickPresent, setShowClickPresent] = useState([]);
+  const [ShowClickPresent, setShowClickPresent] = useState(true);
 
-  const userLocation = "http://localhost:5173" + uniqueUrl;
+  const userLocation = "http://localhost:5173/visithome" + uniqueUrl;
 
-  console.log(uniqueUrl);
   const handleCopy = () => {
     navigator.clipboard.writeText(userLocation);
     alert("복사 되었습니다!");
   };
-  const [response, setResponse] = useState(null);
-  const [photoresponse, setPhotoResponse] = useState(null);
 
+  const [response, setResponse] = useState(null);
+  const [photoresponse, setPhotoResponse] = useState([]);
 
   const [userName, setUserName] = useState("");
   const apiUrl = "/api/v1/kureomi" + uniqueUrl;
 
   const uniqueId = location.pathname.replace("/home/", "");
-  console.log();
+  
   const photoapiUrl = "/api/v1/kureomi/" + uniqueId;
+  console.log(photoapiUrl);
   const navigate = useNavigate();
 
-  const handlePresentClick = (giftBoxId,uniqueUrl) => {
-    console.log(giftBoxId);
-    navigate('/KureomiClose', { 
-      state: { 
-        giftBoxId:giftBoxId,
-        uniqueUrl:uniqueUrl
-      }
+  const handlePresentClick = (giftBoxId, uniqueUrl) => {
+    
+    navigate("/KureomiClose", {
+      state: {
+        giftBoxId: giftBoxId,
+        uniqueUrl: uniqueUrl,
+      },
     });
-  }
+  };
 
   //서버로부터 username받기
   useEffect(() => {
@@ -59,23 +67,26 @@ function Home() {
       setUserName(response.userName);
     }
   }, [response]);
-
-
-  //전체 포토꾸러미 서버로부터 받기 
+  
+  //전체 포토꾸러미 서버로부터 받기
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const photoresponse = await axios.get(photoapiUrl, { withCredentials: true });
+        const photoresponse = await axios.get(photoapiUrl, {
+          withCredentials: true,
+        });
         setPhotoResponse(photoresponse.data);
+        
       } catch (error) {
         console.error("오류", error);
       }
     };
-
+    
     fetchData();
   }, []);
 
-  const size = photoresponse ? photoresponse.length : 0;
+console.log(photoresponse);
+const size = photoresponse?.length;
 
   return (
     <BackGround>
@@ -87,13 +98,14 @@ function Home() {
           <CopyBtn onClick={handleCopy}>복사</CopyBtn>
         </FlexBox>
         <PresentBox>
-          {ShowPresent && photoresponse.map((item, index) => 
-            <PresentComponent 
-              key={index} 
-              giftBoxId={item.giftBox_id} 
-              onClick={() => handlePresentClick(item.giftBox_id,uniqueUrl)} 
-            />
-          )}
+          {ShowPresent &&
+            photoresponse.map((item, index) => (
+              <PresentComponent
+                key={index}
+                giftBoxId={item.giftBox_id}
+                onClick={() => handlePresentClick(item.giftBox_id, uniqueUrl)}
+              />
+            ))}
         </PresentBox>
         <FlexBox height="22%" flag="center">
           {ShowClickPresent && (

@@ -8,10 +8,13 @@ function VisitHome() {
   const [userName, setUserName] = useState("");
   const [photoresponse, setPhotoResponse] = useState(null);
   const [response, setResponse] = useState(null);
-
+  
   const location = useLocation();
-  const uniqueUrl = location.pathname.split("/")[2];
-  const apiUrl = `/api/v1/kureomi/home/${uniqueUrl}`;
+  const uniqueUrl=location.pathname.replace("/visithome/home/","");
+  console.log(uniqueUrl);
+
+  const apiUrl = "/api/v1/kureomi/home/"+uniqueUrl;
+  const photoapiUrl= "/api/v1/kureomi/"+uniqueUrl;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +37,7 @@ function VisitHome() {
     }
   }, [response]);
 
+  
   //포토꾸러미 가져오기
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +53,7 @@ function VisitHome() {
 
     fetchData();
   }, []);
-
+  console.log(photoresponse);
   const size = photoresponse?.length;
 
   return (

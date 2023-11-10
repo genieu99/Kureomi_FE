@@ -61,6 +61,7 @@ function Start() {
     }
 
     const url = request.data;
+    
     navigate("/SignUpSucess", {
       state: {
         url: url,
