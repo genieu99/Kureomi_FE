@@ -8,8 +8,7 @@ function VisitSend() {
   const navigate = useNavigate();
   const location=useLocation();
   const uniqueUrl = location.state?.uniqueUrl;
-  console.log(uniqueUrl);
-
+  const userName = location.state?.userName;
 
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [sendPhotoComplete, setSendPhotoComplete] = useState(false); // 이 부분을 추가합니다.
@@ -39,7 +38,6 @@ function VisitSend() {
         },
       });
 
-      console.log(response.status);
 
       //defaultfile 처리 코드 추가
       if (response.status === 200 || response.status === 201) {
@@ -76,6 +74,7 @@ function VisitSend() {
     } catch (error) {
       console.error("오류 발생:", error);
     }
+    
   };
 
   const buttonStyle = {
@@ -94,7 +93,7 @@ function VisitSend() {
           <Link to="/Login">로그인|</Link>{" "}
           <Link to="/SignUpName">회원가입</Link>{" "}
         </ButtonSigns>
-        <Title>a먀먀ㅑㅁ 홈</Title>
+        <Title>{userName}홈</Title>
         <SubTitle>함께 추억하고 싶은 사진을 6장 선택해주세요.</SubTitle>
         <input
           type="file"
