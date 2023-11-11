@@ -15,7 +15,7 @@ function Start() {
         </ButtonSigns>
         <Title2>포토꾸러미 전송이 완료되었습니다.</Title2>
         <ButtonNext>
-          <Link to="/VisitSend">나의 홈 가기</Link>{" "}
+          <Link to="/">포토꾸러미 입장하기</Link>{" "}
         </ButtonNext>
       </Container>
     </BackGround>

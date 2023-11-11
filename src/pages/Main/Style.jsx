@@ -66,18 +66,20 @@ display:flex;
 flex-direction:column;
 align-items:center;
 `
+export const ImgBoxx=styled.div`
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
 
 export const ImgBox=styled.div`
-width:67%;
-height:42%;
-z-index:4;
-// green대신 콜라주 이미지를 넣으면 됨
-background-color:green;  
-background-size: 100% 100%;
-margin-top:4%;
-position:relative;
-left:1%;
+  width:33%;
+  height:50%;
+  object-fit: cover;
 `
+
 
 export const TextBox=styled.div`
 width:67%;
