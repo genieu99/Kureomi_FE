@@ -67,11 +67,14 @@ flex-direction:column;
 align-items:center;
 `
 export const ImgBoxx=styled.div`
-  width:100%;
-  height:100%;
+  width:67%;
+  height:43%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between;  
+  position:relative;
+  top:2%;
+  left:1%;
 `
 
 export const ImgBox=styled.div`
@@ -97,4 +100,16 @@ padding-left:10px;
 font-family: 'SUITE';
 font-size:18px;
 line-height:150%;
+`
+
+export const CloseBtn=styled.button`
+  background-color: #1C5949;
+  width: 20%;
+  height: 6%;
+  color:white;
+  position:relative;
+  left:30%;
+  bottom:3%;
+  border-radius:11px;
+  font-size:15px;
 `

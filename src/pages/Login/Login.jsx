@@ -18,7 +18,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await axios.post(
         "/api/v1/kureomi/login",
@@ -28,17 +28,19 @@ function Login() {
         },
         { withCredentials: true }
       );
-
+  
       console.log("로그인 성공");
       console.log(response.data);
       const uniqueUrl=response.data.uniqueUrl;
       console.log(uniqueUrl);
-
+  
       navigate(`/home/${uniqueUrl}`);
     } catch (error) {
       console.error("로그인 오류:", error);
+      alert("비밀번호가 다릅니다!");
     }
   };
+    
 
   return (
     <BackGround>
