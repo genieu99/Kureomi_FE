@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import { Container, Title, SubTitle, ButtonSelect, ButtonSigns } from "./Style";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 import axios from "axios";
 
 function VisitSend() {
   const navigate = useNavigate();
-  const location=useLocation();
+  const location = useLocation();
   const uniqueUrl = location.state?.uniqueUrl;
   const userName = location.state?.userName;
 
@@ -38,7 +38,6 @@ function VisitSend() {
         },
       });
 
-
       //defaultfile 처리 코드 추가
       if (response.status === 200 || response.status === 201) {
         console.log("사진 전송 완료");
@@ -51,30 +50,29 @@ function VisitSend() {
         const photoIdList = photoInfoList.map((photo) => photo.photo_id);
 
         //파일명도 추출해서 'default.png'가 있는지 찾기
-        const fileUrlList = photoInfoList.map((photo) => photo.fileUrl); 
-        const defaultFile = fileUrlList.find((fileUrl) => fileUrl === 'default.png');
+        const fileUrlList = photoInfoList.map((photo) => photo.fileUrl);
+        const defaultFile = fileUrlList.find(
+          (fileUrl) => fileUrl === "default.png"
+        );
 
         //defaultfile이 있으면 알림창 띄우기
         if (defaultFile) {
-          alert('유해 사진이 감지되어 기본 이미지로 대체됩니다.');
+          alert("유해 사진이 감지되어 기본 이미지로 대체됩니다.");
         }
         //여기까지
 
-        navigate("/visitwrite", { state: { 
-          photoIdList :photoIdList,
-          uniqueUrl:uniqueUrl
-        } 
-
-      });
+        navigate("/visitwrite", {
+          state: {
+            photoIdList: photoIdList,
+            uniqueUrl: uniqueUrl,
+          },
+        });
       } else {
         console.log("사진 전송 실패 ");
       }
-
-
     } catch (error) {
       console.error("오류 발생:", error);
     }
-    
   };
 
   const buttonStyle = {
@@ -93,7 +91,7 @@ function VisitSend() {
           <Link to="/Login">로그인|</Link>{" "}
           <Link to="/SignUpName">회원가입</Link>{" "}
         </ButtonSigns>
-        <Title>{userName}홈</Title>
+        <Title>{userName}의 홈</Title>
         <SubTitle>함께 추억하고 싶은 사진을 6장 선택해주세요.</SubTitle>
         <input
           type="file"
