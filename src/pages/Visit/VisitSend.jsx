@@ -30,6 +30,12 @@ function VisitSend() {
       formData.append("photos", selectedFiles[i]);
     }
 
+    if (selectedFiles.length !== 6) {
+      alert("사진 6장을 선택해주세요.");
+      setSelectedFiles([]);
+      return;
+    }
+
     try {
       const response = await axios.post("/api/v1/kureomi/photo", formData, {
         withCredentials: true,
@@ -65,6 +71,7 @@ function VisitSend() {
           state: {
             photoIdList: photoIdList,
             uniqueUrl: uniqueUrl,
+            userName:userName
           },
         });
       } else {
@@ -84,6 +91,7 @@ function VisitSend() {
     cursor: "pointer",
     fontSize: "16px",
   };
+
   return (
     <BackGround>
       <Container>

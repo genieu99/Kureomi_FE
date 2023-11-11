@@ -58,7 +58,7 @@ export const Input = styled.input`
   margin-right: auto;
   margin-top: 30px;
   padding-bottom: 5px;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.8);
   font-family: "SUITE";
   z-index: 4;
 `;
