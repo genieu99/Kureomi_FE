@@ -21,7 +21,8 @@ function VisitHome() {
   const move=()=>{
     navigate('/VisitSend',{
       state:{
-        uniqueUrl:uniqueUrl
+        uniqueUrl:uniqueUrl,
+        userName:userName
       }
     });
   }
