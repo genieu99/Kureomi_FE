@@ -65,7 +65,7 @@ function KureomiOpen() {
       closeModal();
     }
   };
-
+//git push 주석
   useEffect(() => {
     // 컴포넌트 마운트 시에 이벤트 리스너 추가
     window.addEventListener('click', handleModalClose);
