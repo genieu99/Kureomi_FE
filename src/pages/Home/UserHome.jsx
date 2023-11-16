@@ -33,13 +33,12 @@ function Home() {
   const apiUrl = "/api/v1/kureomi" + uniqueUrl;
 
   const uniqueId = location.pathname.replace("/home/", "");
-  
+
   const photoapiUrl = "/api/v1/kureomi/" + uniqueId;
   console.log(photoapiUrl);
   const navigate = useNavigate();
 
   const handlePresentClick = (giftBoxId, uniqueUrl) => {
-    
     navigate("/KureomiClose", {
       state: {
         giftBoxId: giftBoxId,
@@ -67,7 +66,7 @@ function Home() {
       setUserName(response.userName);
     }
   }, [response]);
-  
+
   //전체 포토꾸러미 서버로부터 받기
   useEffect(() => {
     const fetchData = async () => {
@@ -76,17 +75,16 @@ function Home() {
           withCredentials: true,
         });
         setPhotoResponse(photoresponse.data);
-        
       } catch (error) {
         console.error("오류", error);
       }
     };
-    
+
     fetchData();
   }, []);
 
-console.log(photoresponse);
-const size = photoresponse?.length;
+  console.log(photoresponse);
+  const size = photoresponse?.length;
 
   return (
     <BackGround>

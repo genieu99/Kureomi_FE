@@ -61,7 +61,7 @@ function Start() {
     }
 
     const url = request.data;
-    
+
     navigate("/SignUpSucess", {
       state: {
         url: url,
@@ -82,15 +82,14 @@ function Start() {
           value={password}
           onChange={handlePasswordChange}
         />
-
-        <input
+        <ButtonNext
           type="submit"
           onClick={async () => {
             await handleNextClick();
           }}
         >
-          {/* <Link to="/SignUpSucess">확인</Link>{" "} */}
-        </input>
+          확인
+        </ButtonNext>
       </Container>
     </BackGround>
   );

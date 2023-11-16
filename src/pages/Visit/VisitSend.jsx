@@ -1,5 +1,13 @@
 import React, { useState, useRef } from "react";
-import { Container, Title, SubTitle, ButtonSelect, ButtonSigns } from "./Style";
+import {
+  Container,
+  Title,
+  SubTitle,
+  ButtonSelect,
+  ButtonSigns,
+  ButtonSend,
+} from "./Style";
+
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 import axios from "axios";
@@ -24,16 +32,16 @@ function VisitSend() {
   };
 
   const sendFilesToBackend = async () => {
+    // Check if exactly 6 files are selected
+    if (selectedFiles.length == 7) {
+      alert("사진을 6장 선택해주세요!");
+      return;
+    }
+
     const formData = new FormData();
 
     for (let i = 0; i < selectedFiles.length; i++) {
       formData.append("photos", selectedFiles[i]);
-    }
-
-    if (selectedFiles.length !== 6) {
-      alert("사진 6장을 선택해주세요.");
-      setSelectedFiles([]);
-      return;
     }
 
     try {
@@ -81,15 +89,21 @@ function VisitSend() {
       console.error("오류 발생:", error);
     }
   };
-
   const buttonStyle = {
     padding: "10px 20px",
-    backgroundColor: "#4CAF50", // 원하는 배경색
+    backgroundColor: "#1C5949", // 원하는 배경색
     color: "white",
     border: "none",
-    borderRadius: "4px",
+    borderRadius: "11px",
     cursor: "pointer",
     fontSize: "16px",
+    width: "60%",
+    height: "9%",
+    marginTop: "7%",
+    fontSize: "20px",
+    fontFamily: "SUITE",
+    fontWeight: "600",
+    fontFamily: "SUITE",
   };
 
   return (
@@ -111,8 +125,8 @@ function VisitSend() {
         />
         <ButtonSelect onClick={openFileInput}>사진 선택하기</ButtonSelect>
         {Array.isArray(selectedFiles) && selectedFiles.length > 0 && (
-          <div>
-            <h2>선택한 파일 목록:</h2>
+          <div><br/><br/><br/><br/><br/><br/>
+            <h2>선택한 파일 목록</h2>
             <ul>
               {selectedFiles.map((file, index) => (
                 <li key={index}>{file.name}</li>

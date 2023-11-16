@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Text = styled.p`
   font-size: 20px;
@@ -34,18 +34,26 @@ export const CopyBtn = styled.button`
   border-radius: 0 10px 10px 0;
   font-family: "SUITE";
 `;
-
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 export const ClickBox = styled.div`
   z-index: 3;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   background-image: url("/Img/clickPresent.png");
   background-size: 100% 100%;
-  width: 50%;
+  width: 36%;
   height: 90%;
   position: relative;
-  left: 4%;
-  top: 15%;
+  margin-top: -24%;
+  padding: 13%;
+  animation: ${rotateAnimation} 1s linear; /* 1초 동안 360도 회전 */
 `;
 
 export const PresentComponent = styled.div`
@@ -58,6 +66,7 @@ export const PresentComponent = styled.div`
   margin-right: 5%;
   margin-top: 5%;
 `;
+
 export const FlexBox = styled.div`
   z-index: 4;
   width: 100%;

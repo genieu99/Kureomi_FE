@@ -85,7 +85,7 @@ export const Input = styled.input`
   font-size: 20px;
   background: transparent;
   outline: none;
-  margin-left: auto;
+  margin-left: 10%;
   margin-right: auto;
   margin-top: 30px;
   padding-bottom: 5px;

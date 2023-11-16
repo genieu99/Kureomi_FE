@@ -32,6 +32,7 @@ export const BackImg=styled.div`
     z-index:0;
   }
 `
+
 export const LogoImg=styled.img`
 width:70%;
 height:20%;
@@ -46,7 +47,7 @@ export const Title = styled.h1`
   margin-top: 
   padding: 10px; /* 텍스트와 텍스트 배경 사이 간격 조절 */
   z-index: 2; /* 다른 요소보다 앞에 표시 */
-`;0
+`;
 
 export const ButtonGroup = styled.div`
   display: flex;

@@ -28,7 +28,8 @@ function Start() {
       setTimeout(() => { 
         navigate('/KureomiOpen', {
           state: {
-            response: response
+            response: response,
+            uniqueUrl:uniqueUrl
           }
         });
       }, 1000);
