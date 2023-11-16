@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const BackGround = styled.div`
   height: 100vh;
   width: 100vw;
-  max-width: 768px;
-  max-height: 1024px;
+  max-width: 546px;
+  max-height: 1181.6px;
 `;
 
 export const BackIMG = styled.div`

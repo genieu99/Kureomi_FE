@@ -78,8 +78,8 @@ function KureomiOpen() {
 
   const renderCollage = () => {
     return photos.map((photo, index) => (
-      <ImgBox key={index} onClick={() => openModal(`http://localhost:8080/image?imageName=${photo.fileUrl}`)}>
-        <img src={`http://localhost:8080/image?imageName=${photo.fileUrl}`} alt={`collage-${index}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <ImgBox key={index} onClick={() => openModal(`http://localhost:8080/api/v1/kureomi/photo?imageName=${photo.fileUrl}`)}>
+        <img src={`http://localhost:8080/api/v1/kureomi/photo?imageName=${photo.fileUrl}`} alt={`collage-${index}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </ImgBox>
     ));
   };

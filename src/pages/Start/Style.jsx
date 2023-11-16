@@ -56,7 +56,7 @@ export const ButtonGroup = styled.div`
   gap: 20px;
   padding: 10px;
   z-index: 5;
-  margin-top: 20px;
+  margin-top: 50px;
   width:100%;
   height:100%;
 `;
