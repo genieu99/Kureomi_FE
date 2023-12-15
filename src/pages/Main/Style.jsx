@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const BackGround = styled.div`
   height: 100vh;
   width: 100vw;
-  max-width: 768px;
-  max-height: 1024px;
+  max-width: 546px;
+  max-height: 1181.6px;
 `;
 export const Container = styled.div`
   height: 100%;
@@ -105,11 +105,12 @@ line-height:150%;
 export const CloseBtn=styled.button`
   background-color: #1C5949;
   width: 20%;
-  height: 6%;
+  height: 5%;
   color:white;
   position:relative;
   left:30%;
   bottom:3%;
   border-radius:11px;
-  font-size:15px;
+  font-size:16px;
+  font-family: 'SUITE';
 `

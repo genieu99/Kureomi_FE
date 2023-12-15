@@ -89,7 +89,7 @@ function Home() {
   return (
     <BackGround>
       <BackIMG imgUrl="/Img/Userhome.png" opaCity="1.0">
-        <Title marginTop="70px">{userName}의 홈</Title>
+        <Title marginTop="128px">{userName}의 홈</Title>
         <Text>받은 꾸러미 : {size}개</Text>
         <FlexBox height="10%" flag="center">
           <LinkBox>{userLocation}</LinkBox>

@@ -72,8 +72,7 @@ function VisitHome() {
     <BackGround>
       <Container>
         <ButtonSigns>
-          <Link to="/Login">로그인|</Link>{" "}
-          <Link to="/SignUpName">회원가입</Link>{" "}
+          <Link to="/">로그인 | 회원가입</Link>{" "}
         </ButtonSigns>
         <Title>{userName}의 홈</Title>
         <SubTitle>받은 꾸러미 : {size}개</SubTitle>

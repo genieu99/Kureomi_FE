@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { Container, Title, ButtonSigns, Input, ButtonSend } from "./Style";
+import { ContainerContents, Title, ButtonSigns, Input, ButtonSend } from "./Style";
 import { Link } from "react-router-dom";
 import { BackGround } from "../Login/Style";
 import axios from "axios";
@@ -16,7 +16,7 @@ function Start() {
   const apiUrl="/api/v1/kureomi/"+uniqueUrl+"/create";
 
   const move=()=>{
-    navigate('/VisitSucess');
+    navigate('/VisitSucess', { state: { uniqueUrl: uniqueUrl } });
   }
 
   const [name, setName] = useState("");
@@ -37,8 +37,8 @@ function Start() {
     setLetter(event.target.value);
   };
 
-  const handleButtonClick = (event) => {
-    handleSubmit(event);
+  const handleButtonClick = async (event) => {
+    await handleSubmit(event);
     move();
   };
   
@@ -120,28 +120,31 @@ function Start() {
   };
 
   const textareaStyle = {
+    alignItems: "center",
     width: "100%",
     maxWidth: "80%",
-    height: "200px",
+    height: "280px",
+    maxHeight: "280px",
     padding: "10px",
     border: "1px solid #ccc",
-    borderRadius: "4px",
+    borderRadius: "10px",
     fontSize: "16px",
     resize: "vertical",
     background: "rgba(255, 255, 255, 0.50)",
     outline: "none",
-    margin: "30px",
     fontfamily: "SUITE",
+    marginTop: 30,
+    marginLeft: "10%",
+    marginRight: "10%",
   };
 
   return (
     <BackGround>
-      <Container>
+      <ContainerContents>
         <ButtonSigns>
-          <Link to="/Login">로그인|</Link>{" "}
-          <Link to="/SignUpName">회원가입</Link>{" "}
+          <Link to="/">로그인 | 회원가입</Link>{" "}
         </ButtonSigns>
-        <Title>{userName}님의 홈</Title>
+        <Title>{userName}의 홈</Title>
         <form onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -157,7 +160,7 @@ function Start() {
           />
           <ButtonSend type="submit" onClick={handleButtonClick}>보내기</ButtonSend>
         </form>
-      </Container>
+      </ContainerContents>
     </BackGround>
   );
 }
